@@ -18,7 +18,6 @@ class App extends React.Component {
     render() {
         const bio = this.state.displayBio ? (
             <>
-                
                 <button onClick={this.toggleDisplayBio}>Show Less</button>
                 <h3>some title</h3>
                 <p>this is description is shown and hide</p>
