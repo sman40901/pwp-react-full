@@ -5,37 +5,65 @@ import PropTypes from 'prop-types';
 import reactDom from 'react-dom';
 
 
-
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
-        // this.handleChange=this.handleChange.bind(this);?
+        this.state = {
+            personGoing: true,
+            numberOfPersons: 56,
+            nameOfPersons: ""
+        };
+        // this.handleInputChange = this.handleInputChange.bind(this);
+    }
 
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const nameOfPersons = target.nameOfPersons;
+        this.setState({
+            [nameOfPersons]: nameOfPersons
+        });
+    }
 
+    showCapturedValues = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const nameOfPersons = target.nameOfPersons;
+        alert(target + " " + value + " " + nameOfPersons);
     }
-    handleChange = (event) => {
-        this.setState({ value: event.target.value });
-    }
-    handleSubmit = (event) => {
-        alert("You have Submitted the input  Successfully " + this.state.value);
-        event.preventDefault();
-    }
+
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h1>Controlled Form Example</h1>
-                {/* <label>Name:
-               <input type = "text" ref= {this.input} /> 
-               </label> */}
-                <label>Company Name:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+            <form>
+                <h1>Multiple Input Controlled Form Example</h1>
+                <label>
+                    Is Person going:
+                    <input
+                        name="personGoing"
+                        type="checkbox"
+                        checked={this.state.personGoing}
+                        onChange={this.handleInputChange} />
                 </label>
-                <input type="submit" value="Submit" />
-
+                <br />
+                <label>
+                    Number of persons:
+                    <input
+                        name="numberOfPersons"
+                        type="number"
+                        value={this.state.numberOfPersons}
+                        onChange={this.handleInputChange} />
+                </label>
+                <br />
+                <label>
+                    Name of persons:
+                    <input
+                        name="nameOfPersons"
+                        type="text"
+                        value={this.state.nameOfPersons}
+                        onChange={this.handleInputChange} />
+                </label>
             </form>
         );
     }
-
 }
 export default App;
