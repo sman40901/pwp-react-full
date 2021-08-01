@@ -19,17 +19,16 @@ class App extends React.Component {
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const nameOfPersons = target.nameOfPersons;
+        const name = target.name;
         this.setState({
-            [nameOfPersons]: nameOfPersons
+            // name is the dynamically populated, to demonstrate this just uncomment line 27
+            [name]: value
         });
+        // alert(name);
     }
 
-    showCapturedValues = (event) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const nameOfPersons = target.nameOfPersons;
-        alert(target + " " + value + " " + nameOfPersons);
+    showCapturedValues = () => {
+      alert(this.state.nameOfPersons + ","+this.state.numberOfPersons+","+this.state.personGoing);
     }
 
     render() {
@@ -62,6 +61,10 @@ class App extends React.Component {
                         value={this.state.nameOfPersons}
                         onChange={this.handleInputChange} />
                 </label>
+                <br />
+
+                <button onClick={this.showCapturedValues}>Sumbit</button>
+
             </form>
         );
     }
