@@ -26,7 +26,7 @@ const CustomerForm = ({ addCustomer }) => {
     // addTodo(todo);
     // setCustomer({  ...customer, setCustomer  });
     // alert(customer.firstName);
-    alert(customer.problem);
+    // alert(customer.problem);
     if(customer.age < 18){
         alert("You are not of legal age");
         return;
