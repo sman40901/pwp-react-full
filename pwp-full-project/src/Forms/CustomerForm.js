@@ -26,6 +26,7 @@ const CustomerForm = ({ addCustomer }) => {
     // addTodo(todo);
     // setCustomer({  ...customer, setCustomer  });
     // alert(customer.firstName);
+    alert(customer.problem);
     if(customer.age < 18){
         alert("You are not of legal age");
         return;
@@ -71,11 +72,14 @@ const CustomerForm = ({ addCustomer }) => {
           onChange={handleChange}
           value={customer.email}
         /><br></br>
-        Problem statement :<TextArea
-                    value={customer.problem}
-                    placeholder="Tell us about your problem"
-                    onChange={handleChange}
-                /><br></br>
+        Problem statement :<textarea 
+        name="problem"
+        onChange={handleChange}
+        value={customer.email}
+          rows="5" cols="33">
+            It was a dark and stormy night...
+            </textarea>
+            <br></br>
         <input type="submit" value="Submit!" />
       </form>
     </div>
