@@ -31,17 +31,17 @@ function App(){
         <IconComponent displayPic={item}/>
         })} */}
         {/* <IconList icons={icons}/> */}
-        {/* {icons.map(item => {
+        {icons.map((item) => {
             console.log({item});
             <h1>{item}</h1>
-        })} */}
+        })}
         <table>
             <tr>
                 <td>
                     {/* I want to make this in loop */}
-        <IconComponent displayPic={icons[0]}/><br></br>
+        {/* <IconComponent displayPic={icons[0]}/><br></br>
         <IconComponent displayPic={icons[1]}/><br></br>
-        <IconComponent displayPic={icons[2]}/><br></br>
+        <IconComponent displayPic={icons[2]}/><br></br> */}
         </td>
        
             <td>
