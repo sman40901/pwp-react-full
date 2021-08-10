@@ -54,21 +54,12 @@ const paidCourse = [
 function App() {
     return (
         <div id="App">
-            {/* {icons.map(item => {
-        <IconComponent displayPic={item}/>
-        })} */}
-            {/* <IconList icons={icons}/> */}
-            {icons.map((item) => {
-                console.log({ item });
-                <h1>{item}</h1>
-            })}
+
+
             <table>
                 <tr>
                     <td>
-                        {/* I want to make this in loop */}
-                        {/* <IconComponent displayPic={icons[0]}/><br></br>
-        <IconComponent displayPic={icons[1]}/><br></br>
-        <IconComponent displayPic={icons[2]}/><br></br> */}
+                        <IconList icons={icons} />
                     </td>
 
                     <td>
@@ -76,6 +67,12 @@ function App() {
                             id='helloworld'
                             class='helloworld'
                             textString={helloworld}
+                        />
+                        <img
+                            src="https://greatriversgreenway.org/wp-content/uploads/2017/02/contact-me-button.png"
+                            alt="contact me"
+                            height="50px"
+                            width="200px"
                         />
                         <TextDisplay
                             id='intro'
@@ -86,7 +83,7 @@ function App() {
                             id='listOfWorks'
                             textString={listOfWorks}
                         />
-                      <OrderedList
+                        <OrderedList
                             books={works} />
                         <TextDisplay
                             id='references'

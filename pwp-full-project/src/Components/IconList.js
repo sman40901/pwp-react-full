@@ -5,11 +5,9 @@ import IconComponent from './IconComponent';
 
 function IconList({icons}){
     return(
-    <div id='IconList'>
-         {icons.map(item => {
-        <IconComponent displayPic={item.value}/>
-         })}
-    </div>
+    <table id='IconList'>
+         {icons.map((item) => <IconComponent displayPic={item} />)}
+    </table>
     );
 }
 
