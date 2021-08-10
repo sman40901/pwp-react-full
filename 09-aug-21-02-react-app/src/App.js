@@ -1,23 +1,29 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.css'
+//10-aug-2021
+function CustomInput(props) {
+  let callRefInput = React.createRef();
+
+  handleClick = () => {
+    callRefInput.current.focus();
+  }
+
+  return (
+    <div>
+      <input text="text" ref={callRefInput} />
+      {/* <input text="text" ref={callRefInput} /> */}
+    </div>
+  );
+}
 
 function App() {
+  this.callRefInput = React.createRef();
+  focusRefInput = () => {
+    this.callRefInput.current.focus();
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CustomInput ref={focusRefInput}/>
     </div>
   );
 }
