@@ -8,7 +8,7 @@ const IconComponent = ({ displayPic }) => {
                     src={displayPic}
                     alt={displayPic}
                     height='30'
-                    width='30' />
+                    width='30' /> 
             </td>
         </tr>);
 }
