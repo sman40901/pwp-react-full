@@ -23,13 +23,13 @@ const routing = (
           <Link to="/contact">Contact</Link>  
         </li>  
       </ul>  
-      <Route exact path="/" component={Home} />  
+      <Route exact path="/" component={App} />  
       <Route path="/about" component={About} />  
       <Route path="/contact" component={Contact} />  
     </div>  
   </Router>  
 )  
-class App extends Component{
+class About extends Component{
   
 
   render(){
@@ -41,4 +41,4 @@ class App extends Component{
 }
 
 
-export default App;
+export default About;

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 import './App.css';  
 // import App from './App';  
 import About from './About'  
-import Contact from './Contact'  
+// import Contact from './Contact'  
 import Home from './Home'  
   
 
@@ -25,11 +25,11 @@ const routing = (
       </ul>  
       <Route exact path="/" component={Home} />  
       <Route path="/about" component={About} />  
-      <Route path="/contact" component={Contact} />  
+      <Route path="/contact" component={this} />  
     </div>  
   </Router>  
 )  
-class App extends Component{
+class Contact extends Component{
   
 
   render(){
@@ -41,4 +41,4 @@ class App extends Component{
 }
 
 
-export default App;
+export default Contact;
