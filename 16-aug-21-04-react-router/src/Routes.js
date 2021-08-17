@@ -1,24 +1,22 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import Page404 from "./pages/Page404";
-import Home from "./pages/Home";
+import {Route, Switch, Redirect} from 'react-router-dom';
+import Page404 from "./pages/404Page";
+import LoginPage from "./pages/LoginPage";
 import SubPage from './pages/SubPage';
-import {Link} from 'react-router-dom';
 
-
-const pages = () => (
+/**
+ * Routes component containing routes for the whole application
+ * @returns {JSX}
+ */
+const Routes = () => (
     <Switch>
-        <Route exact path='/' component={Home} />
+        <Route exact path='/login' component={LoginPage} />
         <Route exact path='/sub-page' component={SubPage} />
+
+        <Redirect exacts from='/' to='/login' />
 
         <Route component={Page404} />
     </Switch>
 );
-
-function Routes(){
-    return(
-        {pages}
-    );
-}
 
 export default Routes;

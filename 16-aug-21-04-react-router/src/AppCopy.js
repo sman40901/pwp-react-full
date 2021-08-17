@@ -5,7 +5,7 @@ import './App.css';
 // import App from './App';  
 import About from './About'  
 import Contact from './Contact'  
-import Home from './Home'  
+import Home from './pages/Home'  
   
 
 const routing = (  
