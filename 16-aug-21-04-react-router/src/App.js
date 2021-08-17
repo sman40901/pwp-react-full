@@ -1,44 +1,38 @@
-import React from 'react';  
-import ReactDOM from 'react-dom';  
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'  
-import './App.css';  
-// import App from './App';  
-import About from './About'  
-import Contact from './Contact'  
-import Home from './Home'  
-  
+import React from 'react';
+import {lastIndexOf, substr} from '@7urtle/lambda';
+import {BrowserRouter as Router} from 'react-router-dom';
+import Routes from './Routes';
+import {Link} from 'react-router-dom';
 
-const routing = (  
-  <Router>  
-    <div>  
-      <h1>React Router Example</h1>  
-      <ul>  
-        <li>  
-          <Link to="/">Home</Link>  
-        </li>  
-        <li>  
-          <Link to="/about">About</Link>  
-        </li>  
-        <li>  
-          <Link to="/contact">Contact</Link>  
-        </li>  
-      </ul>  
-      <Route exact path="/" component={Home} />  
-      <Route path="/about" component={About} />  
-      <Route path="/contact" component={Contact} />  
-    </div>  
-  </Router>  
-)  
-class App extends Component{
-  
+/* Turns URL path into router basename by removing everything after the last slash
+ * 
+ * @HindleyMilner getBasename :: string -> string
+ *
+ * @pure
+ * @param {string} path URL path, probably window.location.pathname
+ * @returns {string} final basename
+ * 
+ * @example
+ * getBaseName('/some/structure/page'); // => '/some/structure'
+ */
+const getBasename = path => substr(lastIndexOf('/')(path))(0)(path);
 
-  render(){
-    return(
-      {routing}
+ /* Base Template component holding the basic web application
+ * @returns {JSX.Element}
+ */
+const App = () => {
+    return (
+        <div>
+            <header>
+                <h1>I am everywhere. Router doesn't touch me.</h1>
+            </header>
+            <article>
+                <Router basename={getBasename(window.location.pathname)}>
+                    <Routes />
+                </Router>
+            </article>
+        </div>
     );
-
-  }
-}
-
+};
 
 export default App;

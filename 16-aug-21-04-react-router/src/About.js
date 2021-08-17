@@ -29,16 +29,11 @@ const routing = (
     </div>  
   </Router>  
 )  
-class About extends Component{
-  
 
-  render(){
-    return(
-      {routing}
-    );
-
-  }
+function About(){
+  return({routing});
 }
+
 
 
 export default About;

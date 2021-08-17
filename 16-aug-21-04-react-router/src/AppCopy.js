@@ -29,7 +29,7 @@ const routing = (
     </div>  
   </Router>  
 )  
-class Home extends Component{
+class AppCopy extends Component{
   
 
   render(){
@@ -41,4 +41,4 @@ class Home extends Component{
 }
 
 
-export default Home;
+export default AppCopy;
