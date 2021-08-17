@@ -2,15 +2,15 @@ import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import loadable from 'react-loadable';
 
-import LoadingPage from "./LoadingPage";
-import Page404 from "./pages/404Page";
-import LoginPage from "./pages/LoginPage";
+import Loading from "./Loading";
+import Page404 from "./pages/Page404";
+import Login from "./pages/Login";
 import SubPage from './pages/SubPage';
 
 const AsyncPages = {
     myAsyncSubPage: loadable({
         loader: () => import('./pages/myAsyncSubPage'),
-        loading: LoadingPage
+        loading: Loading
     })
 };
 
@@ -20,7 +20,7 @@ const AsyncPages = {
  */
 const Routes = () => (
     <Switch>
-        <Route exact path='/login' component={LoginPage} />
+        <Route exact path='/login' component={Login} />
         <Route exact path='/sub-page' component={SubPage} />
         <Route exact path='/my-async-sub-page' component={AsyncPages.myAsyncSubPage} />
 
