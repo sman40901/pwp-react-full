@@ -13,7 +13,7 @@ const Login = () => {
         if(isTrue(state.authentication.authenticated)) {
             history.push('/sub-page')
         }
-    }, [history, state.authentication.authenticated]);
+    },  [state.authentication.authenticated])
 
     return (
         <Page className={classes.page}>
