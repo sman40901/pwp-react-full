@@ -65,7 +65,7 @@ function App() {
                     <td>
                         <TextDisplay
                             id='helloworld'
-                            class='helloworld'
+                            classN='intro'
                             textString={helloworld}
                         />
                         <img

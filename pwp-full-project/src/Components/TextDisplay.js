@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { useState } from 'react';
 import '../App.css';
 
-function TextDisplay({componentId, textString}){
+function TextDisplay({componentId, textString,classN}){
     return(
-        <div id={componentId}>{textString}</div> 
+        <div id={componentId} className={classN}>{textString}</div> 
     );
 }
 
