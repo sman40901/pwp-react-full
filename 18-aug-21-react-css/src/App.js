@@ -16,6 +16,7 @@ class App extends Component {
     return (
       <div id="App">
         <h1 style={{ color: "green" }}> hello javasc</h1>
+        <p style={{backgroundColor:"lightgreen"}}>css tutorial</p>
       </div>
     );
 
