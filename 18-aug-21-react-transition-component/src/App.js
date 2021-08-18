@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import { render } from 'react-dom';
 import { Component } from 'react';
 import { CSSTransitionGroup } from 'react-transition-group' // ES6
+// import CSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
+
 
 // var CSSTransitionGroup = require('react-transition-group/CSSTransitionGroup') // ES5 with npm
 //18-aug-2021
