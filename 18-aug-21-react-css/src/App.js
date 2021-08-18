@@ -13,9 +13,16 @@ const inputRef = React.createRef();
 class App extends Component {
 
   render() {
+    const myStyle={
+      // no inline styling because of negetive impact on SEO
+      color:"Green",
+      backgroundColor:"lightGreen",
+      padding:"10px",
+      fontFamily:"Arial"
+    }
     return (
       <div id="App">
-        <h1 style={{ color: "green" }}> hello javasc</h1>
+        <h1 style={myStyle}> hello javasc</h1>
         <p style={{backgroundColor:"lightgreen"}}>css tutorial</p>
       </div>
     );
