@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 state={
     input:""
@@ -9,4 +9,8 @@ handleInput=(event)=>{
     this.ListeningStateChangedEvent({
         input:event.target.value
     });
+}
+
+class CreateCard extends Component{
+    
 }
