@@ -1,38 +1,20 @@
 
 import React, { useState } from "react";
 
-const CustomerForm = ({ addCustomer }) => {
-    // const [customer, setCustomer] = useState({
-    //     firstName: "",
-    //     middleName: "",
-    //     lastName: "",
-    //     age: -3,
-    //     contactNo: "",
-    //     email: "",
-    //     problem: ""
-    // });
-
-    const initialFormData = Object.freeze({
-       firstName: "",
+const CustomerForm = (/*{ addCustomer }*/) => {
+    const [customer, setCustomer] = useState({
+        firstName: "",
         middleName: "",
         lastName: "",
         age: -3,
         contactNo: "",
         email: "",
-        problem: "" 
-      });
-
-    const [formData, updateFormData] = useState(initialFormData);
-
+        problem: "It was a dark and stormy night..."
+    });
 
     const handleChange = (event) => {
-     // const { name, value } = event.target
-        // setCustomer({
-        //     [name]: value
-
-        updateFormData({
-            ...formData,
-      
+        setCustomer({
+            ...customer,
             // Trimming any whitespace
             [event.target.name]: event.target.value.trim()
           });
@@ -41,16 +23,11 @@ const CustomerForm = ({ addCustomer }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // addTodo(todo);
-        // setCustomer({  ...customer, setCustomer  });
-        // alert(customer.firstName);
-        // alert(customer.problem);
-        // if(customer.age < 18){
-        //     alert("You are not of legal age");
-        //     return;
-        // }
-        // console.log(`Data: ${JSON.stringify(customer)}`);
-        console.log(` ${JSON.stringify(formData)}`);
+        if(customer.age < 18){
+            alert("You are not of legal age");
+            return;
+        }
+        console.log(` ${JSON.stringify(customer)}`);
     };
 
     return (
@@ -68,7 +45,7 @@ const CustomerForm = ({ addCustomer }) => {
                                 type="text"
                                 name="firstName"
                                 onChange={handleChange}
-                                // value={customer.firstName}
+                                value={customer.firstName}
                             />
                         </td>
                     </tr>
@@ -80,7 +57,7 @@ const CustomerForm = ({ addCustomer }) => {
                             type="text"
                             name="middleName"
                             onChange={handleChange}
-                            // value={customer.middleName}
+                            value={customer.middleName}
                         />
                         </td>
                     </tr>
@@ -90,7 +67,7 @@ const CustomerForm = ({ addCustomer }) => {
                                 type="text"
                                 name="lastName"
                                 onChange={handleChange}
-                                // value={customer.lastName}
+                                value={customer.lastName}
                             />
                         </td>
                     </tr>
@@ -103,7 +80,7 @@ const CustomerForm = ({ addCustomer }) => {
                                 type="text"
                                 name="age"
                                 onChange={handleChange}
-                                // value={customer.age}
+                                value={customer.age}
                             />
                         </td>
                     </tr>
@@ -116,7 +93,7 @@ const CustomerForm = ({ addCustomer }) => {
                                 type="text"
                                 name="contactNo"
                                 onChange={handleChange}
-                                // value={customer.contactNo}
+                                value={customer.contactNo}
                             />
                         </td>
                     </tr>
@@ -129,7 +106,7 @@ const CustomerForm = ({ addCustomer }) => {
                                 type="text"
                                 name="email"
                                 onChange={handleChange}
-                                // value={customer.email}
+                                value={customer.email}
                             />
                         </td>
                     </tr>
@@ -141,9 +118,9 @@ const CustomerForm = ({ addCustomer }) => {
                             <textarea
                                 name="problem"
                                 onChange={handleChange}
-                                // value={customer.problem}
+                                value={customer.problem}
                                 rows="5" cols="33">
-                                It was a dark and stormy night...
+                                
                             </textarea>
                         </td>
                     </tr>
