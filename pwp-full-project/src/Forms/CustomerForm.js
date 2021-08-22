@@ -36,7 +36,7 @@ const CustomerForm = ({ addCustomer }) => {
   return (
     <div>
       {/* <form onSubmit={handleSubmit}> */}
-      <form onSubmit={e=>handleSubmit(e)}>
+      <form onSubmit={event=>handleSubmit(event)}>
         First Name : <input
           type="text"
           name="firstName"
