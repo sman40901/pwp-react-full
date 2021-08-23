@@ -28,5 +28,3 @@ class CreateCard extends Component {
     }
 
 }
-
-export default CreateCard;
