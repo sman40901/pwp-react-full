@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-const CustomerForm = ({ addCustomer }) => {
+const CustomerForm = (/*{ addCustomer }*/) => {
     const [customer, setCustomer] = useState({
         firstName: "",
         middleName: "",
@@ -9,35 +9,25 @@ const CustomerForm = ({ addCustomer }) => {
         age: -3,
         contactNo: "",
         email: "",
-        problem: ""
+        problem: "It was a dark and stormy night..."
     });
 
     const handleChange = (event) => {
-        // setCustomer({ ...customer, firstName: event.target.value });
-        const { name, value } = event.target
         setCustomer({
-            [name]: value
-        })
-        // setCustomer({
-        //     ...customer,
-
-        //     // Trimming any whitespace
-        //     [event.target.name]: event.target.value.trim()
-        //   });
+            ...customer,
+            // Trimming any whitespace
+            [event.target.name]: event.target.value.trim()
+          });
     };
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // addTodo(todo);
-        // setCustomer({  ...customer, setCustomer  });
-        // alert(customer.firstName);
-        // alert(customer.problem);
-        // if(customer.age < 18){
-        //     alert("You are not of legal age");
-        //     return;
-        // }
-        console.log(`Data: ${JSON.stringify(customer)}`);
+        if(customer.age < 18){
+            alert("You are not of legal age");
+            return;
+        }
+        console.log(` ${JSON.stringify(customer)}`);
     };
 
     return (
@@ -130,7 +120,7 @@ const CustomerForm = ({ addCustomer }) => {
                                 onChange={handleChange}
                                 value={customer.problem}
                                 rows="5" cols="33">
-                                It was a dark and stormy night...
+                                
                             </textarea>
                         </td>
                     </tr>
