@@ -3,44 +3,20 @@ import React, { Component } from 'react';
 
 
 
-class TodoList extends Component {
-    state = {
-        input: ""
-    }
-
-    handleListInput = (event) => {
-        this.setState({
-            input: event.target.value
-        });
+const TodoList=(props)=>{
+    function handleClick(event){
+        event.preventDefault();
+        props.handleClickList(props.cardId, props.list.id)
 
     }
-
-    handleListSubmit = (event) => {
-        event.preventDeault();
-        this.props.addList(this.props.id,
-            this.state.input);
-        this.setState({
-            input: ""
-        });
-    }
-
-    render() {
-        return (
-            <div className="to-do-card">
-                <h4>{this.props.card.title}</h4>
-                <form
-                    onSubmit={this.handleListSubmit}
-                >
-                    <input 
-                        onChange={this.handleListInput}
-                        type="text"
-                        value={this.state.input}
-                    />
-                </form>
-            </div>
-        );
-    }
-
+    return (
+        <div onClick={handleClick} className='to-do-class-container'>
+            <h3>{props.list.description}
+            ?"/"
+            :
+            </h3>
+        </div>
+    );
 }
 
 export default TodoList;

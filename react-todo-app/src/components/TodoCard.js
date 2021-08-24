@@ -24,6 +24,17 @@ class TodoCard extends Component {
         });
     }
 
+    renderList=()=>{
+            return this.props.card.lists.map(list=>{
+                return <TodoList
+                    key={list.id}
+                    handleClickLists={this.props.handleClickLists}
+                    cardId={this.props.card.id}
+                    list={}
+                />
+            });
+    }
+
     render() {
         return (
             <div className="to-do-card">
@@ -44,3 +55,16 @@ class TodoCard extends Component {
 }
 
 export default TodoCard;
+// const foundCard={...this.state.cards.find(card=>card.id===cardId)}
+// foundCard.Lists={...foundCard.Lists.newlist}
+
+// const newCards=this.state.cards.map(card=>{
+//     if(card.id===cardID){
+//         return foundCard;
+//     }
+//     else{
+//         return card;
+//     }
+// });
+
+// this.setState()
