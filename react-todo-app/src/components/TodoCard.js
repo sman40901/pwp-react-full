@@ -8,24 +8,36 @@ class TodoList extends Component {
         input: ""
     }
 
-    handleInput = (event) => {
-        event.persists();
-        this.ListeningStateChangedEvent({
+    handleListInput = (event) => {
+        this.setState({
             input: event.target.value
         });
+
     }
 
-    handleNewCard = (event) => {
+    handleListSubmit = (event) => {
         event.preventDeault();
-        this.props.creteNewCard(this.state.input);
+        this.props.addList(this.props.id,
+            this.state.input);
+        this.setState({
+            input: ""
+        });
     }
 
     render() {
         return (
-            <form onSubmit={this.handleNewCard} className="new-card-form">
-                <input onChange={this.handleInput} className='new-card-input' type='text' value={this.state.input} />
-                <input type='submit' value='Submit'/>
-            </form>
+            <div className="to-do-card">
+                <h4>{this.props.card.title}</h4>
+                <form
+                    onSubmit={this.handleListSubmit}
+                >
+                    <input 
+                        onChange={this.handleListInput}
+                        type="text"
+                        value={this.state.input}
+                    />
+                </form>
+            </div>
         );
     }
 
