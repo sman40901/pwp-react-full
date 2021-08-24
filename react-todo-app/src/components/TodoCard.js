@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import TodoList from './TodoList';
+// import TodoList from './TodoList';
 
 
 
-class TodoList extends Component {
+class TodoCard extends Component {
     state = {
         input: ""
     }
@@ -43,4 +43,4 @@ class TodoList extends Component {
 
 }
 
-export default TodoList;
+export default TodoCard;
