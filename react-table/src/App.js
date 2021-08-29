@@ -1,42 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import { render } from 'react-dom';
-import { Component } from 'react';
-//10-aug-2021
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.callRefInput = null;
-    this.setInputRed = (element) => {
-      this.callRefInput = element;
-    }
-    this.focusRefInput=()=>{
-      //focus input using raw DOM API
-      if(this.callRefInput){
-        this.callRefInput.focus();
-      }
-    };
-  
-  }
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
-  componentDidMount(){
-    //auto focus of the input mount
-    this.focusRefInput();
-  }
-  
-  render(){
-    return(
-      <div>
-        <input type="text" ref={this.setInputRef}/>
-        <input type="button" onClick={this.focusRefInput}/>
-      </div>
-    );
-  }
+import Table from "./Table/Table";
+import "./App.css";
 
+function App() {
+  // data state to store the TV Maze API data. Its initial value is an empty array
+  const [data, setData] = useState([]);
+
+  // Using useEffect to call the API once mounted and set the data
+  useEffect(() => {
+    (async () => {
+      const result = await axios("https://api.tvmaze.com/search/shows?q=snow");
+      setData(result.data);
+    })();
+  }, []);
+
+  return (
+    <div className="App"></div>
+  );
 }
-
-
-
-
 
 export default App;
