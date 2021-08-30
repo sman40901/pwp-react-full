@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// import React, { useMemo, useState, useEffect } from "react";
+// import axios from "axios";
+
+// import Table from "./Table";
+// import "./App.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
