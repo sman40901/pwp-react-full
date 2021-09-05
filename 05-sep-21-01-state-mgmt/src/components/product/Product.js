@@ -7,13 +7,13 @@ class Product extends Component {
         return (
             <div className='wrapper'>
                 <div className="product"><span role="img" aria-label="ice cream">🍦</span></div>
-                <div className='addremove'></div>
+                {/* <div className='addremove'></div>
                 <div className='product'>
 
-                </div>
-                <div className='totalno'>
+                </div> */}
+                {/* <div className='totalno'>
 
-                </div>
+                </div> */}
                 <button className='addProduct'>Add</button>
                 <button className='removeProduct'>Remove</button>
             </div>
