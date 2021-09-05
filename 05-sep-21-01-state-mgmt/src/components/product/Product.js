@@ -10,13 +10,22 @@ class Product extends Component {
         total: 0
       }
     
+      money = {
+        min: 2,
+        max: 2,
+      }
+    
+      getTotal = () => {
+        return this.state.total.toLocaleString(undefined, this.money)
+      }
+    
 
     render() {
         return (
             <div className='wrapper'>
                 <Cart 
                     items={this.state.cart}
-                    total={this.state.total}
+                    total={this.getTotal()}
                 />
                 <div className="product"><span role="img" aria-label="ice cream">🍦</span></div>
                 <button className='addProduct'>Add</button>
