@@ -10,13 +10,13 @@ class Product extends Component {
         total: 0
       }
     
-      money = {
-        min: 2,
-        max: 2,
+      currencyOptions = {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
       }
     
       getTotal = () => {
-        return this.state.total.toLocaleString(undefined, this.money)
+        return this.state.total.toLocaleString(undefined, this.currencyOptions)
       }
     
 
