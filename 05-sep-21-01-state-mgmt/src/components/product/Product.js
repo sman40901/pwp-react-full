@@ -26,6 +26,14 @@ class Product extends Component {
         })
     }
 
+    emptyCart = () => {
+        this.setState({
+            cart: [],
+            total: 0
+        })
+    }
+
+
     render() {
         return (
             <div className='wrapper'>
@@ -38,7 +46,10 @@ class Product extends Component {
                     className='btnAddProduct'
                     onClick={this.addItem}
                 >Add</button>
-                <button className='btnRemoveProduct'>Remove</button>
+                <button
+                    className='btnRemoveProduct'
+                    onClick={this.emptyCart}
+                >Remove</button>
             </div>
         );
     }
