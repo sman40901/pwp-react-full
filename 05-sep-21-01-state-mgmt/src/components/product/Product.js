@@ -35,10 +35,10 @@ class Product extends Component {
                 />
                 <div className="product"><span role="img" aria-label="ice cream">🍦</span></div>
                 <button
-                    className='addProduct'
+                    className='btnAddProduct'
                     onClick={this.addItem}
                 >Add</button>
-                <button className='removeProduct'>Remove</button>
+                <button className='btnRemoveProduct'>Remove</button>
             </div>
         );
     }
