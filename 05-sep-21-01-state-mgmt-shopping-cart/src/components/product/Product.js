@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 import Cart from '../cart/cart'
+import Item from '../items/Item';
 import './Product.css';
 
 
@@ -19,21 +20,23 @@ class Product extends Component {
         return this.state.total.toLocaleString(undefined, this.currencyOptions)
     }
 
-    addItem = () => {
-        this.setState({
-            cart: ['ice cream'],
-            total: 5
-        })
+    addItem = (event) => {
+        const target = event.target;
+        alert(target.name)
+        // this.setState({
+        //     cart: ['ice cream'],
+        //     total: 5
+        // })
     }
 
-    emptyCart = () => {
+    removeItem = () => {
         this.setState({
             cart: [],
             total: 0
         })
     }
 
-
+    // "https://hotemoji.com/images/emoji/x/6mnhuxe873ax.png"
     render() {
         return (
             <div className='wrapper'>
@@ -41,15 +44,20 @@ class Product extends Component {
                     items={this.state.cart}
                     total={this.getTotal()}
                 />
-                <div className="product"><span role="img" aria-label="ice cream">🍦</span></div>
-                <button
-                    className='btnAddProduct'
-                    onClick={this.addItem}
-                >Add</button>
-                <button
-                    className='btnRemoveProduct'
-                    onClick={this.emptyCart}
-                >Remove</button>
+                <Item
+                    name="icecream"
+                    price="5"
+                    addItem={this.addItem}
+                    removeItem={this.removeItem}
+                    pic="https://hotemoji.com/images/emoji/9/fy8o5d1ara2s9.png"
+                />
+                <Item
+                    name="coffee"
+                    price="4"
+                    addItem={this.addItem}
+                    removeItem={this.removeItem}
+                    pic="https://hotemoji.com/images/emoji/x/6mnhuxe873ax.png"
+                />
             </div>
         );
     }
