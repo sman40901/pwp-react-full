@@ -8,27 +8,36 @@ class Product extends Component {
     state = {
         cart: [],
         total: 0
-      }
-    
-      currencyOptions = {
+    }
+
+    currencyOptions = {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-      }
-    
-      getTotal = () => {
+    }
+
+    getTotal = () => {
         return this.state.total.toLocaleString(undefined, this.currencyOptions)
-      }
-    
+    }
+
+    addItem = () => {
+        this.setState({
+            cart: ['ice cream'],
+            total: 5
+        })
+    }
 
     render() {
         return (
             <div className='wrapper'>
-                <Cart 
+                <Cart
                     items={this.state.cart}
                     total={this.getTotal()}
                 />
                 <div className="product"><span role="img" aria-label="ice cream">🍦</span></div>
-                <button className='addProduct'>Add</button>
+                <button
+                    className='addProduct'
+                    onClick={this.addItem}
+                >Add</button>
                 <button className='removeProduct'>Remove</button>
             </div>
         );
