@@ -36,7 +36,6 @@ class Product extends Component {
         })
     }
 
-    // "https://hotemoji.com/images/emoji/x/6mnhuxe873ax.png"
     render() {
         return (
             <div className='wrapper'>
