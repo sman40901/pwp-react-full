@@ -35,10 +35,8 @@ class Product extends Component {
 
     getTotal = () => {
         // return this.state.total.toLocaleString(undefined, this.currencyOptions)
-
         const total = this.state.cart.reduce((totalCost, item) => totalCost + item.price, 0);
         return total.toLocaleString(undefined, this.currencyOptions)
-
     }
 
     addItem = (product) => {
@@ -51,10 +49,13 @@ class Product extends Component {
     removeItem = (product) => {
         this.setState(state => {
             const cart = [...state.cart];
-            cart.splice(cart.indexOf(product.name))
+            const productIndex = cart.findIndex(p => p.name === product.name);
+            if (productIndex < 0) {
+                return;
+            }
+            cart.splice(productIndex, 1)
             return ({
-                cart,
-                total: state.total - product.price
+                cart
             })
         })
     }
