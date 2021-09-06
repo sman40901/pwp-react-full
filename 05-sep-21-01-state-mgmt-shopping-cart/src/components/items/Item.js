@@ -4,8 +4,8 @@ function Item({name, price, addItem, removeItem, pic}) {
     return (
         <div className={name}><span role="img" aria-label={name}>
             <img src={pic} alt={name}/>
-            {name}
-            {price}
+            <div className="itemName">Item:{name}</div>
+            <div className="price">Price:{price}</div>
         </span>
             <button
                 className='btnAddProduct'
