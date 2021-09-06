@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
+import './Product.css';
 
-function Item({name, price, addItem, removeItem, pic}) {
+function Item({name,emoji, addItem, removeItem}) {
     return (
-        <div className={name}><span role="img" aria-label={name}>
-            <img src={pic} alt={name}/>
-            <div className="itemName">Item:{name}</div>
-            <div className="price">Price:{price}</div>
-        </span>
+        <div className="product" key={name}>
+            <span role="img" aria-label={name}>{emoji}</span>
             <button
                 className='btnAddProduct'
                 onClick={addItem}
@@ -15,6 +13,7 @@ function Item({name, price, addItem, removeItem, pic}) {
                 className='btnRemoveProduct'
                 onClick={removeItem}
             >Remove</button>
+
         </div>
     );
 }

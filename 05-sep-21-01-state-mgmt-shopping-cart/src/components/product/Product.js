@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 import Cart from '../cart/cart'
-import Item from '../items/Item';
+import Item from './Item';
 import './Product.css';
 
+const products = [
+    {
+        emoji: '🍦',
+        name: 'ice cream',
+        price: 5
+    },
+    {
+        emoji: '🍩',
+        name: 'donuts',
+        price: 2.5,
+    },
+    {
+        emoji: '🍉',
+        name: 'watermelon',
+        price: 4
+    }
+];
 
 class Product extends Component {
     state = {
         cart: [],
-        total: 0
+        // total: 0
     }
 
     currencyOptions = {
@@ -17,22 +34,29 @@ class Product extends Component {
     }
 
     getTotal = () => {
-        return this.state.total.toLocaleString(undefined, this.currencyOptions)
+        // return this.state.total.toLocaleString(undefined, this.currencyOptions)
+        const total = this.state.cart.reduce((totalCost, item) => totalCost + item.price, 0);
+        return total.toLocaleString(undefined, this.currencyOptions)
     }
 
-    addItem = (event) => {
-        const target = event.target;
-        alert(target.name)
-        // this.setState({
-        //     cart: ['ice cream'],
-        //     total: 5
-        // })
+    addItem = (product) => {
+        this.setState(state => ({
+            cart: [...state.cart, product],
+            // total: state.total + product.price
+        }))
     }
 
-    removeItem = () => {
-        this.setState({
-            cart: [],
-            total: 0
+    removeItem = (product) => {
+        this.setState(state => {
+            const cart = [...state.cart];
+            const productIndex = cart.findIndex(p => p.name === product.name);
+            if (productIndex < 0) {
+                return;
+            }
+            cart.splice(productIndex, 1)
+            return ({
+                cart
+            })
         })
     }
 
@@ -43,20 +67,15 @@ class Product extends Component {
                     items={this.state.cart}
                     total={this.getTotal()}
                 />
-                <Item
-                    name="icecream"
-                    price="5"
-                    addItem={this.addItem}
-                    removeItem={this.removeItem}
-                    pic="https://hotemoji.com/images/emoji/9/fy8o5d1ara2s9.png"
-                />
-                <Item
-                    name="coffee"
-                    price="4"
-                    addItem={this.addItem}
-                    removeItem={this.removeItem}
-                    pic="https://hotemoji.com/images/emoji/x/6mnhuxe873ax.png"
-                />
+                {products.map(product => (
+
+                    <Item
+                        name={product.name}
+                        emoji={product.emoji}
+                        addItem={() => this.addItem(product)}
+                        removeItem={() => this.removeItem(product)}
+                    />
+                ))}
             </div>
         );
     }
