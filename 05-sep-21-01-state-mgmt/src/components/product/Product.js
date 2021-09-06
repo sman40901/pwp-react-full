@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 import Cart from '../cart/cart'
+import Item from './Item';
 import './Product.css';
 
+const products = [
+    {
+        emoji: '🍦',
+        name: 'ice cream',
+        price: 5
+    },
+    {
+        emoji: '🍩',
+        name: 'donuts',
+        price: 2.5,
+    },
+    {
+        emoji: '🍉',
+        name: 'watermelon',
+        price: 4
+    }
+];
 
 class Product extends Component {
     state = {
         cart: [],
-        total: 0
+        // total: 0
     }
 
     currencyOptions = {
@@ -16,23 +34,30 @@ class Product extends Component {
     }
 
     getTotal = () => {
-        return this.state.total.toLocaleString(undefined, this.currencyOptions)
+        // return this.state.total.toLocaleString(undefined, this.currencyOptions)
+
+        const total = this.state.cart.reduce((totalCost, item) => totalCost + item.price, 0);
+        return total.toLocaleString(undefined, this.currencyOptions)
+
     }
 
-    addItem = () => {
-        this.setState({
-            cart: ['ice cream'],
-            total: 5
+    addItem = (product) => {
+        this.setState(state => ({
+            cart: [...state.cart, product],
+            // total: state.total + product.price
+        }))
+    }
+
+    removeItem = (product) => {
+        this.setState(state => {
+            const cart = [...state.cart];
+            cart.splice(cart.indexOf(product.name))
+            return ({
+                cart,
+                total: state.total - product.price
+            })
         })
     }
-
-    emptyCart = () => {
-        this.setState({
-            cart: [],
-            total: 0
-        })
-    }
-
 
     render() {
         return (
@@ -41,15 +66,15 @@ class Product extends Component {
                     items={this.state.cart}
                     total={this.getTotal()}
                 />
-                <div className="product"><span role="img" aria-label="ice cream">🍦</span></div>
-                <button
-                    className='btnAddProduct'
-                    onClick={this.addItem}
-                >Add</button>
-                <button
-                    className='btnRemoveProduct'
-                    onClick={this.emptyCart}
-                >Remove</button>
+                {products.map(product => (
+
+                    <Item
+                        name={product.name}
+                        emoji={product.emoji}
+                        addItem={() => this.addItem(product)}
+                        removeItem={() => this.removeItem(product)}
+                    />
+                ))}
             </div>
         );
     }
