@@ -54,16 +54,24 @@ function Product() {
         //         cart
         //     })
         // })
-        const cart = current;
-        const productIndex = cart.findIndex(p => p.name === product.name);
+        // const newCart = cart;
+        // const productIndex = cart.findIndex(p => p.name === product.name);
+        // if (productIndex < 0) {
+        //     return;
+        // }
+        // newCart.removeItem(productIndex)
+        // alert(newCart)
+        setCart(current=>{
+            const cart1 = cart;
+            const productIndex = cart1.findIndex(p => p.name === product.name);
             if (productIndex < 0) {
                 return;
             }
-            cart.splice(productIndex, 1)
+            cart1.splice(productIndex, 1)
             return ({
-                cart
+                cart1
             })
-        setCart(current => [...current, product.name]);
+        });
         setTotal(current => current - product.price);
     }
 
