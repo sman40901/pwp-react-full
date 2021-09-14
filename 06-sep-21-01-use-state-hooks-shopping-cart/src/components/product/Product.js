@@ -28,58 +28,53 @@ const currencyOptions = {
     maximumFractionDigits: 2,
 }
 
+function cartReducer(state, action) {
+    switch (action.type) {
+        case 'add':
+            return [...state, action.product];
+        case 'remove':
+            const productIndex = state.findIndex(item => item.name === action.product.name);
+            if (productIndex < 0) {
+                return state;
+            }
+            const update = [...state];
+            update.splice(productIndex, 1)
+            return update
+        default:
+            return state;
+    }
+}
+
+function totalReducer(state, action) {
+    if (action.type == 'add') {
+        return state + action.price;
+    }
+    return state - action.price;
+}
+
 function Product() {
 
-    const [cart, setCart] = useState([]);
-    const [total, setTotal] = useState(0);
+    const [cart, setCart] = useReducer(cartReducer, []);
+    const [total, setTotal] = useReducer(totalReducer, 0);
 
-    function getTotal(total) {
+    function getTotal(cart) {
+        const total = cart.reduce((totalCost, item) => totalCost + item.price, 0);
         return total.toLocaleString(undefined, currencyOptions)
     }
 
     function addItem(product) {
-        setCart(current => [...current, product.name]);
-        setTotal(current => current + product.price);
-      }
-
-    function removeItem(product) {
-        // this.setState(state => {
-        //     const cart = [...state.cart];
-        //     const productIndex = cart.findIndex(p => p.name === product.name);
-        //     if (productIndex < 0) {
-        //         return;
-        //     }
-        //     cart.splice(productIndex, 1)
-        //     return ({
-        //         cart
-        //     })
-        // })
-        // const newCart = cart;
-        // const productIndex = cart.findIndex(p => p.name === product.name);
-        // if (productIndex < 0) {
-        //     return;
-        // }
-        // newCart.removeItem(productIndex)
-        // alert(newCart)
-        setCart(current=>{
-            const cart1 = cart;
-            const productIndex = cart1.findIndex(p => p.name === product.name);
-            if (productIndex < 0) {
-                return;
-            }
-            cart1.splice(productIndex, 1)
-            return ({
-                cart1
-            })
-        });
-        setTotal(current => current - product.price);
+        setCart({ product, type: 'add' });
     }
 
+    function removeItem(product) {
+        setCart({ product, type: 'remove' });
+    }
+    
     return (
         <div className='wrapper'>
             <Cart
                 items={cart.length}
-                total={getTotal(total)}
+                total={getTotal(cart)}
             />
             {products.map(product => (
 
