@@ -7,15 +7,15 @@ export default function FileNamer() {
   const [name, setName] = useState('');
   const [alert, setAlert] = useState(false);
 
-  // useEffect(() => {
-  //   const handleWindowClick = () => setAlert(false)
-  //   if (alert) {
-  //     window.addEventListener('click', handleWindowClick);
-  //   } else {
-  //     window.removeEventListener('click', handleWindowClick);
-  //   }
-  //   return () => window.removeEventListener('click', handleWindowClick);
-  // }, [alert, setAlert]);
+  useEffect(() => {
+    const handleWindowClick = () => setAlert(false)
+    if (alert) {
+      window.addEventListener('click', handleWindowClick);
+    } else {
+      window.removeEventListener('click', handleWindowClick);
+    }
+    return () => window.removeEventListener('click', handleWindowClick);
+  }, [alert, setAlert]);
 
   const validate = event => {
     if (/\*/.test(name)) {
@@ -47,7 +47,8 @@ export default function FileNamer() {
           <button
             className="information"
             // onBlur={() => setAlert(false)}
-            onClick={() => setAlert(!alert)}
+            // onClick={() => setAlert(!alert)}
+            onClick={() => setAlert(true)}
             type="button"
           >
             more information
