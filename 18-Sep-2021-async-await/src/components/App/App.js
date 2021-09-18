@@ -1,31 +1,18 @@
-// import logo from './logo.svg';
-import React, {useContext, useState, createContext} from 'react';
-import TextInformation from '../TextInformation/TextInformation';
-
-export const TextContext = createContext();
-TextContext.displayName = 'TextContext';
+import React, { useState } from 'react';
+import './App.css';
+import RiverInformation from '../RiverInformation/RiverInformation';
 
 function App() {
-  const [text, setText] = useState('');
-
-  return(
-    <TextContext.Provider value={text}>
-      <div className="wrapper">
-        <label htmlFor="text">
-          Add Your Text Here:
-          <br/>
-          <textarea
-            id="text"
-            name="text"
-            rows="10"
-            cols="100"
-            onChange={e => setText(e.target.value)}
-          >
-          </textarea>
-        </label>
-        <TextInformation></TextInformation>
-      </div>
-    </TextContext.Provider>
+  const [river, setRiver] = useState('nile');
+  return (
+    <div className="wrapper">
+      <h1>World's Longest Rivers</h1>
+      <button onClick={() => setRiver('nile')}>Nile</button>
+      <button onClick={() => setRiver('amazon')}>Amazon</button>
+      <button onClick={() => setRiver('yangtze')}>Yangtze</button>
+      <button onClick={() => setRiver('mississippi')}>Mississippi</button>
+      <RiverInformation name={river} />
+    </div>
   );
 }
 
