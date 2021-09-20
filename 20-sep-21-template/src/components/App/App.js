@@ -10,17 +10,6 @@ function App() {
   const [list, setList] = useState([]);
   const mounted = useRef(true);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setItem(itemInput)
-      .then(() => {
-        if(mounted.current) {
-          setItemInput('');
-          setAlert(true);
-        }
-      })
-  };
-  
   useEffect(() => {
     mounted.current = true;
     if(list.length && !alert) {
@@ -44,6 +33,17 @@ function App() {
       }, 1000)
     }
   }, [alert])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setItem(itemInput)
+      .then(() => {
+        if(mounted.current) {
+          setItemInput('');
+          setAlert(true);
+        }
+      })
+  };
 
   return (
     <div className='App'>
