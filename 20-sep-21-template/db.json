@@ -1,7 +1,50 @@
 {
   "list": [
-    { "id": 1, "item": "bread" },
-    { "id": 2, "item": "grapes" },
-    { "id": 3, "item": "rice" }
+    {
+      "id": 1,
+      "item": "bread"
+    },
+    {
+      "id": 2,
+      "item": "grapes"
+    },
+    {
+      "id": 3,
+      "item": "rice"
+    },
+    {
+      "item": "beans",
+      "id": 4
+    },
+    {
+      "item": "chickpeas",
+      "id": 5
+    },
+    {
+      "item": "apricot",
+      "id": 6
+    },
+    {
+      "item": "apples",
+      "id": 7
+    },
+    {
+      "item": "oranges",
+      "id": 8
+    },
+    {
+      "item": "grapes",
+      "id": 9
+    },
+    {
+      "item": "potato",
+      "id": 10
+    },
+    {
+      "item": {
+        "current": true
+      },
+      "id": 11
+    }
   ]
 }
