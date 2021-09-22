@@ -2,15 +2,19 @@ import React, { useReducer, useState } from 'react';
 import './App.css';
 
 const formReducer = (state, event) => {
-  return {
-    ...state,
-    [event.name]: event.value
+  if (event.reset) {
+    return {
+      apple: '',
+      count: 0,
+      name: '',
+      'gift-wrap': false,
+    }
   }
 }
 
 
 function App() {
-  const [formData, setFormData] = useReducer(formReducer, {});
+  const [formData, setFormData] = useReducer(formReducer, { count: 100, });
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = event => {
@@ -19,14 +23,18 @@ function App() {
 
     setTimeout(() => {
       setSubmitting(false);
-    }, 3000)
+      setFormData({
+        reset: true
+      })
+    }, 3000);
   }
 
   const handleChange = event => {
+    const isCheckbox = event.target.type === 'checkbox';
     setFormData({
       name: event.target.name,
-      value: event.target.value,
-    });
+      value: isCheckbox ? event.target.checked : event.target.value,
+    })
   }
 
 
@@ -38,7 +46,7 @@ function App() {
           You are submitting the following:
           <ul>
             {Object.entries(formData).map(([name, value]) => (
-              <li key={name}><strong>{name}</strong>:{value.toString()}</li>
+              <li key={name}><strong>{name}</strong>: {value.toString()}</li>
             ))}
           </ul>
         </div>
@@ -47,13 +55,17 @@ function App() {
         <fieldset>
           <label>
             <p>Name</p>
-            <input name="name" onChange={handleChange} />
+            <input name="name"
+              onChange={handleChange}
+              value={formData.name || ''} />
           </label>
         </fieldset>
         <fieldset>
           <label>
             <p>Apples</p>
-            <select name="apple" onChange={handleChange}>
+            <select name="apple"
+              onChange={handleChange}
+              value={formData.apple || ''}>
               <option value="">--Please choose an option--</option>
               <option value="fuji">Fuji</option>
               <option value="jonathan">Jonathan</option>
@@ -62,11 +74,18 @@ function App() {
           </label>
           <label>
             <p>Count</p>
-            <input type="number" name="count" onChange={handleChange} step="1" />
+            <input type="number"
+              name="count"
+              onChange={handleChange}
+              step="1"
+              value={formData.count || ''} />
           </label>
           <label>
             <p>Gift Wrap</p>
-            <input type="checkbox" name="gift-wrap" onChange={handleChange} />
+            <input type="checkbox"
+              name="gift-wrap"
+              onChange={handleChange}
+              checked={formData['gift-wrap'] || false} />
           </label>
         </fieldset>
         <button type="submit">Submit</button>
@@ -74,4 +93,5 @@ function App() {
     </div>
   )
 }
+
 export default App;
