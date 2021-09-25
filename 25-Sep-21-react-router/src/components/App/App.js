@@ -33,12 +33,12 @@ function App() {
           <Route path="/narwhal">
             <Narwhal />
           </Route>
-          <Route exact path="/whale">
+          <Route path="/whale">
             <Whale />
           </Route>
-          <Route path="/whale/:type">
+          {/* <Route path="/whale/:type">
             <Whale />
-          </Route>
+          </Route> */} */}
         </Switch>
       </BrowserRouter>
     </div>
