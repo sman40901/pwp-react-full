@@ -38,7 +38,7 @@ function App() {
           </Route>
           {/* <Route path="/whale/:type">
             <Whale />
-          </Route> */} */}
+          </Route> */}
         </Switch>
       </BrowserRouter>
     </div>
