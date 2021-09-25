@@ -21,6 +21,9 @@ function App() {
             <li><Link to="/manatee">Manatee</Link></li>
             <li><Link to="/narwhal">Narwhal</Link></li>
             <li><Link to="/whale">Whale</Link></li>
+            {/* dynamic search parameter url */}
+            <li><Link to="/whale/beluga">Beluga Whale</Link></li>
+            <li><Link to="/whale/blue">Blue Whale</Link></li>
           </ul>
         </nav>
         <Switch>
@@ -30,7 +33,10 @@ function App() {
           <Route path="/narwhal">
             <Narwhal />
           </Route>
-          <Route path="/whale">
+          <Route exact path="/whale">
+            <Whale />
+          </Route>
+          <Route path="/whale/:type">
             <Whale />
           </Route>
         </Switch>
