@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 import Dashboard from '../Dashboard/Dashboard';
 import Preferences from '../Preferences/Preferences';
+import Login from '../Login/Login';
 
 
 // {/* if we use like this, it will trigger full browser refresh */}
@@ -13,8 +14,27 @@ import Preferences from '../Preferences/Preferences';
 function App() {
   return (
     <div className="wrapper">
-      <Dashboard/>
-      <Preferences/>
+      <h1>Application</h1>
+      <BrowserRouter>
+        <nav>
+          <ul>
+            <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/preferences">Preferences</Link></li>
+            <li><Link to="/login">Login</Link></li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/preferences">
+            <Preferences />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
