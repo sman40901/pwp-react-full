@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './Product.css';
 
-function Item({name,emoji, addItem, removeItem}) {
+function Item({name,emoji, addItem, removeItem, itemCount}) {
     return (
         <div className="product" key={name}>
             <span role="img" aria-label={name}>{emoji}</span>
+            <span className="count" >x {itemCount}</span>
             <button
                 className='btnAddProduct'
                 onClick={addItem}

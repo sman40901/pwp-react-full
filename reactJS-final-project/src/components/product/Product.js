@@ -8,36 +8,55 @@ const products = [
     {
         emoji: '🍦',
         name: 'ice cream',
+        count: 0,
         price: 5
     },
     {
         emoji: '🍩',
         name: 'donuts',
+        count: 0,
         price: 2.5,
     },
     {
         emoji: '🍉',
         name: 'watermelon',
+        count: 0,
         price: 4
     }
 ];
-
 
 const currencyOptions = {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
 }
 
+function addItemsCount(product) {
+    const item = products.find(item => item.name === product.name);
+    item.count += 1;
+}
+
+function subItemsCount(product) {
+    const item = products.find(item => item.name === product.name);
+    if (item.count > 0) {
+        item.count -= 1;
+    }
+}
+
 function cartReducer(state, action) {
     switch (action.type) {
         case 'add':
+            // this function is not working
+            addItemsCount(action.product);
             return [...state, action.product];
+
         case 'remove':
             const productIndex = state.findIndex(item => item.name === action.product.name);
             if (productIndex < 0) {
                 return state;
             }
             const update = [...state];
+            // this function is not working
+            subItemsCount(action.product);
             update.splice(productIndex, 1)
             return update
         default:
@@ -69,7 +88,7 @@ function Product() {
     function removeItem(product) {
         setCart({ product, type: 'remove' });
     }
-    
+
     return (
         <div className='wrapper'>
             <Cart
@@ -81,6 +100,7 @@ function Product() {
                 <Item
                     name={product.name}
                     emoji={product.emoji}
+                    itemCount={product.count}
                     addItem={() => addItem(product)}
                     removeItem={() => removeItem(product)}
                 />
