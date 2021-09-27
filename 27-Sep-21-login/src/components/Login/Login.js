@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import './Login.css';
+
 
 
 function Login() {
     return (
-        <div className='login'>
+        <div className='loginform'>
+            <h2>Please login</h2>
             <form>
                 <label>
                     <p>Username</p>
