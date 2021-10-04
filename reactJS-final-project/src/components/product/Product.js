@@ -32,13 +32,13 @@ const currencyOptions = {
 
 function addItemsCount(product) {
     const item = products.find(item => item.name === product.name);
-    item.count += 1;
+    item.count ++;
 }
 
 function subItemsCount(product) {
     const item = products.find(item => item.name === product.name);
     if (item.count > 0) {
-        item.count -= 1;
+        item.count --;
     }
 }
 
