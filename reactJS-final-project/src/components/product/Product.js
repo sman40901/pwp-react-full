@@ -30,12 +30,12 @@ const currencyOptions = {
     maximumFractionDigits: 2,
 }
 
-function addItemsCount(product) {
+function increaseItemsCount(product) {
     const item = products.find(item => item.name === product.name);
     item.count ++;
 }
 
-function subItemsCount(product) {
+function decreaseItemsCount(product) {
     const item = products.find(item => item.name === product.name);
     if (item.count > 0) {
         item.count --;
@@ -45,18 +45,13 @@ function subItemsCount(product) {
 function cartReducer(state, action) {
     switch (action.type) {
         case 'add':
-            // this function is not working
-            addItemsCount(action.product);
             return [...state, action.product];
-
         case 'remove':
             const productIndex = state.findIndex(item => item.name === action.product.name);
             if (productIndex < 0) {
                 return state;
             }
             const update = [...state];
-            // this function is not working
-            subItemsCount(action.product);
             update.splice(productIndex, 1)
             return update
         default:
@@ -82,10 +77,12 @@ function Product() {
     }
 
     function addItem(product) {
+        increaseItemsCount(product);
         setCart({ product, type: 'add' });
     }
 
     function removeItem(product) {
+        decreaseItemsCount(product);
         setCart({ product, type: 'remove' });
     }
 
