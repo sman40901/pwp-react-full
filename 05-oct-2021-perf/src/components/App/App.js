@@ -1,60 +1,37 @@
+import React, { useState, useReducer } from 'react';
 import './App.css';
-// import { render } from 'react-dom';
-// import { Component } from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import Product from '../product/Product'
-import Home from '../Home/home';
-import Login from '../login/Login';
+import CharacterMap from '../CharacterMap/CharacterMap';
+
 
 function App() {
-  return (
-    <div className="App">
-      <table>
-        <BrowserRouter>
-          <tr className="top">
-            <td className="top">
-              <table>
-                <tr>
-                  <td>
-                    <nav>
-                      <ul>
-                        <li>
-                          <Link to="/home" id="home">Home</Link>
-                        </li>
-                        <li>
-                          <Link to="/product" id="product">Buy Product</Link>
-                        </li>
-                        <li>
-                          <Link to="/login" id="login">Login</Link>
-                        </li>
-                      </ul>
-                    </nav>
-                  </td>
-                </tr>
-              </table>
-            </td>
+  const [text, setText] = useState('');
+  const [showExplanation, toggleExplanation] = useReducer(state => !state, false)
 
-            <td>
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route path="/home">
-                  <Home />
-                </Route>
-                <Route path="/product">
-                  <Product />
-                </Route>
-                <Route path="/login">
-                  <Login />
-                </Route>
-              </Switch>
-            </td>
-          </tr>
-        </BrowserRouter>
-      </table>
+  return (
+    <div className="wrapper">
+      <label htmlFor="text">
+        <p>Add Your Text Here:</p>
+        <textarea
+          id="text"
+          name="text"
+          rows="10"
+          cols="100"
+          onChange={event => setText(event.target.value)}
+        >
+        </textarea>
+
+      </label>
+      <div>
+        <button onClick={toggleExplanation}>Show Explanation</button>
+      </div>
+      {showExplanation &&
+        <p>
+          This displays a list of the most common characters.
+        </p>
+      }
+      <CharacterMap text={text} />
     </div>
-  );
+  )
 }
 
 export default App;
