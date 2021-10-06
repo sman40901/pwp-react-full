@@ -24,12 +24,9 @@ function App() {
       <div>
         <button onClick={toggleExplanation}>Show Explanation</button>
       </div>
-      {showExplanation &&
-        <p>
-          This displays a list of the most common characters.
-        </p>
-      }
-      <CharacterMap text={text} />
+      <CharacterMap
+        text={text}
+        showExplanation={showExplanation} />
     </div>
   )
 }
