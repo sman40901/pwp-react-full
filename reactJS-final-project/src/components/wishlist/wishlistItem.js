@@ -10,7 +10,14 @@ function itemDone(item) {
         status = 'nd';
     }
     document.getElementById(item.name).className = status;
+
 }
+
+function removeItem(item) {
+    // alert(name);
+    item.done = true;
+}
+
 
 export default function WishListItem({ item }) {
     return (
@@ -18,12 +25,11 @@ export default function WishListItem({ item }) {
             <span className='nd' id={item.name}>{item.name}</span>
             <button
                 className='btnDoneItem'
-
                 onClick={() => itemDone(item)}
             >Done</button>
             <button
                 className='btnRemove'
-            // onClick={addItem}
+                onClick={() => removeItem(item)}
             >Remove</button>
         </div>
     );

@@ -11,7 +11,6 @@ export default function WishList({ mylist }) {
                 <h1>Here is your Wish List</h1>
                 <ul>
                     {mylist.map(item => (
-
                         <WishListItem
                            item={item}
                         />

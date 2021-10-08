@@ -88,6 +88,7 @@ function Product({ mylist }) {
     function addToWishList(product) {
         const indexItem = mylist.findIndex(item => item.name === product.name);
         // alert(item1);
+        product.done = false;
         if (indexItem === -1) {
             mylist.push(product);
             // alert(mylist.length)
