@@ -5,6 +5,9 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Product from '../product/Product'
 import Home from '../Home/home';
 import Login from '../login/Login';
+import WishList from '../wishlist/wishlist';
+
+const myList = [];
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
                         <li>
                           <Link to="/login" id="login">Login</Link>
                         </li>
+                        <li>
+                          <Link to="/wishlist" id="wishlist">Wish List</Link>
+                        </li>
                       </ul>
                     </nav>
                   </td>
@@ -43,10 +49,13 @@ function App() {
                   <Home />
                 </Route>
                 <Route path="/product">
-                  <Product />
+                  <Product mylist={myList} />
                 </Route>
                 <Route path="/login">
                   <Login />
+                </Route>
+                <Route path="/wishlist">
+                  <WishList mylist={myList} />
                 </Route>
               </Switch>
             </td>

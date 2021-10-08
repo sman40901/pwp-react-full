@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Product.css';
 
-function Item({name,emoji, addItem, removeItem, itemCount}) {
+function Item({ name, emoji, addItem, removeItem, itemCount, addToWishList }) {
     return (
         <div className="product" key={name}>
             <span role="img" aria-label={name}>{emoji}</span>
@@ -14,7 +14,10 @@ function Item({name,emoji, addItem, removeItem, itemCount}) {
                 className='btnRemoveProduct'
                 onClick={removeItem}
             >Remove</button>
-
+            <button
+                className='addToWishList'
+                onClick={addToWishList}
+            >Add To Wishlist</button>
         </div>
     );
 }
