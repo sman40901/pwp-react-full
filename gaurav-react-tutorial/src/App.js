@@ -1,7 +1,30 @@
 import logo from './logo.svg';
+import { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
+
+
+
+
 
 function App() {
+  const [characters, setCharacters] = useState([]);
+
+  const loadApiData = () => {
+    axios.get('https://swapi.dev/api/people')
+      .then(response => {
+        setCharacters([...response.data.results])
+      })
+  }
+
+  useEffect(() => {
+    loadApiData();
+    // return () => {
+
+    // }
+  }, []);
+
+  // loadApiData();
   return (
     <div className="App">
       <header className="App-header">
