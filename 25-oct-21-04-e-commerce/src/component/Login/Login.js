@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css'
 import { Link, useHistory } from "react-router-dom";
-import { auth } from "../../firebase";
+import { authentication } from "../../firebase";
 
 function Login() {
 
@@ -12,7 +12,7 @@ function Login() {
     const signIn = e => {
         e.preventDefault();
 
-        auth
+        authentication
             .signInWithEmailAndPassword(email, password)
             .then(auth => {
                 history.push('/')
